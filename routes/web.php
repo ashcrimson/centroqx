@@ -76,3 +76,8 @@ Route::group(['middleware' => 'auth'],function () {
 
     Route::resource('servicios', 'ServicioController');
 });
+
+
+Route::resource('especialidads', especialidadController::class);
+
+Route::resource('diagnosticos', DiagnosticoController::class);

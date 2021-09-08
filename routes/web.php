@@ -80,4 +80,12 @@ Route::group(['middleware' => 'auth'],function () {
 
 Route::resource('especialidads', especialidadController::class);
 
-Route::resource('diagnosticos', DiagnosticoController::class);
+Route::resource('intervencions', intervencionController::class);
+
+Route::resource('diagnosticos', diagnosticoController::class);
+
+Route::resource('anestesias', anestesiaController::class);
+
+
+
+Route::resource('partes', parteController::class);

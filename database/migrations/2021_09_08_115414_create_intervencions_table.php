@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiagnosticosTable extends Migration
+class CreateIntervencionsTable extends Migration
 {
 
     /**
@@ -14,9 +14,10 @@ class CreateDiagnosticosTable extends Migration
      */
     public function up()
     {
-        Schema::create('diagnosticos', function (Blueprint $table) {
+        Schema::create('intervencions', function (Blueprint $table) {
             $table->id('id');
-            $table->text('descrpicon');
+            $table->string('codigo');
+            $table->string('descripcion');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +30,6 @@ class CreateDiagnosticosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('diagnosticos');
+        Schema::drop('intervencions');
     }
 }

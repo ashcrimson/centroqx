@@ -7,19 +7,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Class Diagnostico
+ * Class anestesia
  * @package App\Models
- * @version September 7, 2021, 1:23 pm CST
+ * @version September 8, 2021, 12:19 pm CST
  *
- * @property string $descrpicon
+ * @property string $codigo
+ * @property string $descripcion
  */
-class Diagnostico extends Model
+class anestesia extends Model
 {
     use SoftDeletes;
 
     use HasFactory;
 
-    public $table = 'diagnosticos';
+    public $table = 'anestesias';
     
 
     protected $dates = ['deleted_at'];
@@ -27,7 +28,8 @@ class Diagnostico extends Model
 
 
     public $fillable = [
-        'descrpicon'
+        'codigo',
+        'descripcion'
     ];
 
     /**
@@ -36,7 +38,8 @@ class Diagnostico extends Model
      * @var array
      */
     protected $casts = [
-        'descrpicon' => 'string'
+        'codigo' => 'string',
+        'descripcion' => 'string'
     ];
 
     /**
@@ -45,7 +48,8 @@ class Diagnostico extends Model
      * @var array
      */
     public static $rules = [
-        'descrpicon' => 'required'
+        'codigo' => 'required',
+        'descripcion' => 'required'
     ];
 
     

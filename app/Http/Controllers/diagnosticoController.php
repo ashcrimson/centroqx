@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\DiagnosticoDataTable;
+use App\DataTables\diagnosticoDataTable;
 use App\Http\Requests;
-use App\Http\Requests\CreateDiagnosticoRequest;
-use App\Http\Requests\UpdateDiagnosticoRequest;
-use App\Models\Diagnostico;
+use App\Http\Requests\CreatediagnosticoRequest;
+use App\Http\Requests\UpdatediagnosticoRequest;
+use App\Models\diagnostico;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
-class DiagnosticoController extends AppBaseController
+class diagnosticoController extends AppBaseController
 {
     /**
-     * Display a listing of the Diagnostico.
+     * Display a listing of the diagnostico.
      *
-     * @param DiagnosticoDataTable $diagnosticoDataTable
+     * @param diagnosticoDataTable $diagnosticoDataTable
      * @return Response
      */
-    public function index(DiagnosticoDataTable $diagnosticoDataTable)
+    public function index(diagnosticoDataTable $diagnosticoDataTable)
     {
         return $diagnosticoDataTable->render('diagnosticos.index');
     }
 
     /**
-     * Show the form for creating a new Diagnostico.
+     * Show the form for creating a new diagnostico.
      *
      * @return Response
      */
@@ -35,18 +35,18 @@ class DiagnosticoController extends AppBaseController
     }
 
     /**
-     * Store a newly created Diagnostico in storage.
+     * Store a newly created diagnostico in storage.
      *
-     * @param CreateDiagnosticoRequest $request
+     * @param CreatediagnosticoRequest $request
      *
      * @return Response
      */
-    public function store(CreateDiagnosticoRequest $request)
+    public function store(CreatediagnosticoRequest $request)
     {
         $input = $request->all();
 
-        /** @var Diagnostico $diagnostico */
-        $diagnostico = Diagnostico::create($input);
+        /** @var diagnostico $diagnostico */
+        $diagnostico = diagnostico::create($input);
 
         Flash::success('Diagnostico guardado exitosamente.');
 
@@ -54,7 +54,7 @@ class DiagnosticoController extends AppBaseController
     }
 
     /**
-     * Display the specified Diagnostico.
+     * Display the specified diagnostico.
      *
      * @param  int $id
      *
@@ -62,8 +62,8 @@ class DiagnosticoController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var Diagnostico $diagnostico */
-        $diagnostico = Diagnostico::find($id);
+        /** @var diagnostico $diagnostico */
+        $diagnostico = diagnostico::find($id);
 
         if (empty($diagnostico)) {
             Flash::error('Diagnostico not found');
@@ -75,7 +75,7 @@ class DiagnosticoController extends AppBaseController
     }
 
     /**
-     * Show the form for editing the specified Diagnostico.
+     * Show the form for editing the specified diagnostico.
      *
      * @param  int $id
      *
@@ -83,8 +83,8 @@ class DiagnosticoController extends AppBaseController
      */
     public function edit($id)
     {
-        /** @var Diagnostico $diagnostico */
-        $diagnostico = Diagnostico::find($id);
+        /** @var diagnostico $diagnostico */
+        $diagnostico = diagnostico::find($id);
 
         if (empty($diagnostico)) {
             Flash::error('Diagnostico not found');
@@ -96,17 +96,17 @@ class DiagnosticoController extends AppBaseController
     }
 
     /**
-     * Update the specified Diagnostico in storage.
+     * Update the specified diagnostico in storage.
      *
      * @param  int              $id
-     * @param UpdateDiagnosticoRequest $request
+     * @param UpdatediagnosticoRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateDiagnosticoRequest $request)
+    public function update($id, UpdatediagnosticoRequest $request)
     {
-        /** @var Diagnostico $diagnostico */
-        $diagnostico = Diagnostico::find($id);
+        /** @var diagnostico $diagnostico */
+        $diagnostico = diagnostico::find($id);
 
         if (empty($diagnostico)) {
             Flash::error('Diagnostico not found');
@@ -123,7 +123,7 @@ class DiagnosticoController extends AppBaseController
     }
 
     /**
-     * Remove the specified Diagnostico from storage.
+     * Remove the specified diagnostico from storage.
      *
      * @param  int $id
      *
@@ -133,8 +133,8 @@ class DiagnosticoController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var Diagnostico $diagnostico */
-        $diagnostico = Diagnostico::find($id);
+        /** @var diagnostico $diagnostico */
+        $diagnostico = diagnostico::find($id);
 
         if (empty($diagnostico)) {
             Flash::error('Diagnostico not found');

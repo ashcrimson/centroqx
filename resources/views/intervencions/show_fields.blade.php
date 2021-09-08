@@ -1,20 +1,20 @@
 <!-- Codigo Field -->
 {!! Form::label('codigo', 'Codigo:') !!}
-{!! $diagnostico->codigo !!}<br>
+{!! $intervencion->codigo !!}<br>
 
 
 <!-- Descripcion Field -->
 {!! Form::label('descripcion', 'Descripcion:') !!}
-{!! $diagnostico->descripcion !!}<br>
+{!! $intervencion->descripcion !!}<br>
 
 
 <!-- Created At Field -->
 {!! Form::label('created_at', 'Created At:') !!}
-{!! $diagnostico->created_at !!}<br>
+{!! $intervencion->created_at !!}<br>
 
 
 <!-- Updated At Field -->
 {!! Form::label('updated_at', 'Updated At:') !!}
-{!! $diagnostico->updated_at !!}<br>
+{!! $intervencion->updated_at !!}<br>
 
 

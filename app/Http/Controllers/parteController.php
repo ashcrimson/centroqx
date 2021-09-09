@@ -6,8 +6,9 @@ use App\DataTables\parteDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateparteRequest;
 use App\Http\Requests\UpdateparteRequest;
-use App\Models\parte;
 use App\Models\Paciente;
+use App\Models\parte;
+use Carbon\Carbon;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -52,6 +53,31 @@ class parteController extends AppBaseController
         Flash::success('Parte guardado exitosamente.');
 
         return redirect(route('partes.index'));
+    }
+
+    public function procesaStore(Request $request)
+    {
+
+//        DB::enableQueryLog();
+
+        /**
+         * @var  Paciente $paciente
+         */
+        $paciente = $this->creaOactualizaPaciente($request);
+
+        $request->merge([
+            'paciente_id' => $paciente->id     
+        ]);
+
+
+        /** @var Preparacion $preparacion */
+        $parte = parte::create($request->all());
+
+
+        return $parte;
+
+//        dd(DB::getQueryLog());
+
     }
 
     /**
@@ -178,5 +204,25 @@ class parteController extends AppBaseController
 
 
         return $paciente;
+    }
+
+    public function addAttributos(parte $parte)
+    {
+        $parte->setAttribute("run" ,$parte->paciente->run);
+        $parte->setAttribute("dv_run" ,$parte->paciente->dv_run);
+        $parte->setAttribute("apellido_paterno" ,$parte->paciente->apellido_paterno);
+        $parte->setAttribute("apellido_materno" ,$parte->paciente->apellido_materno);
+        $parte->setAttribute("primer_nombre" ,$parte->paciente->primer_nombre);
+        $parte->setAttribute("segundo_nombre" ,$parte->paciente->segundo_nombre);
+        $parte->setAttribute("fecha_nac" ,Carbon::parse($parte->paciente->fecha_nac)->format('Y-m-d'));
+        $parte->setAttribute("sexo" ,$parte->paciente->sexo == 'M' ? 1 : 0);
+
+        $parte->setAttribute("direccion" ,$parte->paciente->direccion);
+        $parte->setAttribute("familiar_responsable" ,$parte->paciente->familiar_responsable);
+        $parte->setAttribute("telefono" ,$parte->paciente->telefono);
+
+        return $parte;
+
+
     }
 }

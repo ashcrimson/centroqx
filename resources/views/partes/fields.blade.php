@@ -12,7 +12,7 @@
         <!-- /.card-header -->
         <div class="card-body">
             <div class="form-row">
-                @include('pacientes.fields',['paciente' => $preparacion->paciente ?? null])
+                @include('pacientes.fields',['paciente' => $parte->paciente ?? null])
             </div>
         </div>
         <!-- /.card-body -->

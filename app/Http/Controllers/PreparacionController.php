@@ -9,7 +9,7 @@ use App\Http\Requests\CreatePreparacionRequest;
 use App\Http\Requests\UpdatePreparacionRequest;
 use App\Models\Empleado;
 use App\Models\Paciente;
-use App\Models\Preparacion;
+use App\Models\Preparacion; 
 use App\Models\PreparacionEstado;
 use Carbon\Carbon;
 use Flash;

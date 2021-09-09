@@ -16,7 +16,8 @@ class CreatePartesTable extends Migration
     {
         Schema::create('partes', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('paciente_id')->index('partes_pacientes1_idx');
+            $table->unsignedBigInteger('paciente_id');
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->string('tipo_cirugia');
             $table->string('especialidad');
             $table->string('diagnostico');
@@ -29,14 +30,14 @@ class CreatePartesTable extends Migration
             $table->decimal('tiempo_quirurgico');
             $table->string('anestecia_sugerida');
             $table->string('aislamiento');
-            $table->boolean('alergia_latex');
+            $table->string('alergia_latex');
             $table->string('usuario_taco');
             $table->string('necesidad_cama_upc');
             $table->string('prioridad');
             $table->string('necesita_donantes_sangre');
             $table->string('evaluacion_preanestesica');
-            $table->boolean('equipo_rayos');
-            $table->boolean('insumos_especificos');
+            $table->string('equipo_rayos');
+            $table->string('insumos_especificos');
             $table->string('ex_preoperatorios');
             $table->string('biopsia');
             $table->string('instrumental');

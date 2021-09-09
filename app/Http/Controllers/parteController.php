@@ -11,6 +11,7 @@ use App\Models\parte;
 use Carbon\Carbon;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Http\Request;
 use Response;
 
 class parteController extends AppBaseController
@@ -204,7 +205,7 @@ class parteController extends AppBaseController
 
 
         return $paciente;
-    }
+    } 
 
     public function addAttributos(parte $parte)
     {

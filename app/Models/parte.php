@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * Class parte
  * @package App\Models
  * @version September 8, 2021, 1:42 pm CST
+ *
  * @property \App\Models\Paciente $paciente
  * @property integer $paciente_id
  * @property string $tipo_cirugia
@@ -84,6 +85,7 @@ class parte extends Model
      * @var array
      */
     protected $casts = [
+        'id' => 'integer',
         'paciente_id' => 'integer',
         'especialidad' => 'string',
         'diagnostico' => 'string',
@@ -127,6 +129,6 @@ class parte extends Model
         return $this->belongsTo(\App\Models\Paciente::class, 'paciente_id');
     }
 
-
+ 
     
 }

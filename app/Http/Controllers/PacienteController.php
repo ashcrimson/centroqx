@@ -9,6 +9,7 @@ use App\Http\Requests\CreatePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
 use App\Models\Paciente;
 use App\Models\Preparacion;
+use App\Models\parte;
 use Carbon\Carbon;
 use Exception;
 use Flash;
@@ -177,7 +178,7 @@ class PacienteController extends AppBaseController
         /**
          * @var Paciente $paciente
          */
-        $paciente = Paciente::with('preparaciones')->where('run',$request->run)->first();
+        $paciente = Paciente::with('partes')->where('run',$request->run)->first();
 
 
         if ($paciente){
@@ -229,25 +230,5 @@ class PacienteController extends AppBaseController
 
     }
 
-    public function formatFechasPreparacion(Preparacion $preparacion)
-    {
-
-
-        if ($preparacion->fecha_admision){
-            $preparacion->setAttribute("fecha_admision",Carbon::parse($preparacion->fecha_admision)->format('Y-m-d'));
-        }
-        if ($preparacion->fecha_validez){
-            $preparacion->setAttribute("fecha_validez",Carbon::parse($preparacion->fecha_validez)->format('Y-m-d'));
-        }
-
-        if ($preparacion->fecha_elaboracion){
-            $preparacion->setAttribute("hora_elaboracion",Carbon::parse($preparacion->fecha_elaboracion)->format('H:i'));
-            $preparacion->setAttribute("fecha_elaboracion",Carbon::parse($preparacion->fecha_elaboracion)->format('Y-m-d'));
-        }
-
-
-        return $preparacion;
-
-
-    }
+  
 }

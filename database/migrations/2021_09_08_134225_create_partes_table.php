@@ -16,11 +16,7 @@ class CreatePartesTable extends Migration
     {
         Schema::create('partes', function (Blueprint $table) {
             $table->id('id');
-            $table->string('rut_paciente');
-            $table->string('nombre_paciente');
-            $table->string('apellido_paciente');
-            $table->string('telefono_paciente');
-            $table->decimal('edad_paciente');
+            $table->unsignedBigInteger('paciente_id')->index('partes_pacientes1_idx');
             $table->string('tipo_cirugia');
             $table->string('especialidad');
             $table->string('diagnostico');
@@ -29,20 +25,20 @@ class CreatePartesTable extends Migration
             $table->string('lateralidad');
             $table->string('otra_intervencion');
             $table->string('cma');
-            $table->string('clasificacion_asa');
+            $table->string('clasificacion_asa')->nullable();
             $table->decimal('tiempo_quirurgico');
             $table->string('anestecia_sugerida');
-            $table->boolean('aislamiento');
+            $table->string('aislamiento');
             $table->boolean('alergia_latex');
-            $table->boolean('usuario_taco');
-            $table->boolean('necesidad_cama_upc');
-            $table->boolean('prioridad');
-            $table->boolean('necesita_donantes_sangre');
-            $table->boolean('evaluacion_preanestesica');
+            $table->string('usuario_taco');
+            $table->string('necesidad_cama_upc');
+            $table->string('prioridad');
+            $table->string('necesita_donantes_sangre');
+            $table->string('evaluacion_preanestesica');
             $table->boolean('equipo_rayos');
             $table->boolean('insumos_especificos');
             $table->string('ex_preoperatorios');
-            $table->boolean('biopsia');
+            $table->string('biopsia');
             $table->string('instrumental');
             $table->string('observaciones');
             $table->timestamps();

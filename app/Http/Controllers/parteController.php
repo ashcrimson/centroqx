@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateparteRequest;
 use App\Http\Requests\UpdateparteRequest;
 use App\Models\parte;
+use App\Models\Paciente;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -147,5 +148,35 @@ class parteController extends AppBaseController
         Flash::success('Parte deleted successfully.');
 
         return redirect(route('partes.index'));
+    }
+
+    public function creaOactualizaPaciente(Request $request)
+    {
+        $paciente = Paciente::updateOrCreate([
+            'run' => $request->run,
+            'dv_run' => $request->dv_run,
+
+        ],[
+            'run' => $request->run,
+            'fecha_nac' => $request->fecha_nac,
+            'dv_run' => $request->dv_run,
+            'apellido_paterno' => $request->apellido_paterno,
+            'apellido_materno' => $request->apellido_materno,
+            'primer_nombre' => $request->primer_nombre,
+            'segundo_nombre' => $request->segundo_nombre,
+
+            'sexo' => $request->sexo ? 'M' : 'F',
+
+            'direccion' => $request->direccion,
+            'familiar_responsable' => $request->familiar_responsable,
+            'telefono' => $request->telefono,
+            'telefono2' => $request->telefono2,
+            'prevision_id' => $request->prevision_id,
+
+        ]);
+
+
+
+        return $paciente;
     }
 }

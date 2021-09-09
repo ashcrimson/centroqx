@@ -10,12 +10,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * Class parte
  * @package App\Models
  * @version September 8, 2021, 1:42 pm CST
- *
- * @property string $rut_paciente
- * @property string $nombre_paciente
- * @property string $apellido_paciente
- * @property string $telefono_paciente
- * @property number $edad_paciente
+ * @property \App\Models\Paciente $paciente
+ * @property integer $paciente_id
  * @property string $tipo_cirugia
  * @property string $especialidad
  * @property string $diagnostico
@@ -55,11 +51,7 @@ class parte extends Model
 
 
     public $fillable = [
-        'rut_paciente',
-        'nombre_paciente',
-        'apellido_paciente',
-        'telefono_paciente',
-        'edad_paciente',
+        'paciente_id',
         'tipo_cirugia',
         'especialidad',
         'diagnostico',
@@ -92,12 +84,7 @@ class parte extends Model
      * @var array
      */
     protected $casts = [
-        'rut_paciente' => 'string',
-        'nombre_paciente' => 'string',
-        'apellido_paciente' => 'string',
-        'telefono_paciente' => 'string',
-        'edad_paciente' => 'decimal:2',
-        'tipo_cirugia' => 'string',
+        'paciente_id' => 'integer',
         'especialidad' => 'string',
         'diagnostico' => 'string',
         'otro_diagnostico' => 'string',
@@ -106,17 +93,17 @@ class parte extends Model
         'otra_intervencion' => 'string',
         'cma' => 'string',
         'anestecia_sugerida' => 'string',
-        'aislamiento' => 'boolean',
+        'aislamiento' => 'string',
         'alergia_latex' => 'boolean',
-        'usuario_taco' => 'boolean',
-        'necesidad_cama_upc' => 'boolean',
-        'prioridad' => 'boolean',
-        'necesita_donantes_sangre' => 'boolean',
-        'evaluacion_preanestesica' => 'boolean',
+        'usuario_taco' => 'string',
+        'necesidad_cama_upc' => 'string',
+        'prioridad' => 'string',
+        'necesita_donantes_sangre' => 'string',
+        'evaluacion_preanestesica' => 'string',
         'equipo_rayos' => 'boolean',
         'insumos_especificos' => 'boolean',
         'ex_preoperatorios' => 'string',
-        'biopsia' => 'boolean',
+        'biopsia' => 'string',
         'instrumental' => 'string',
         'observaciones' => 'string'
     ];
@@ -127,8 +114,19 @@ class parte extends Model
      * @var array
      */
     public static $rules = [
+
+        'clasificacion_asa'=>'nullable'
         
     ];
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function paciente()
+    {
+        return $this->belongsTo(\App\Models\Paciente::class, 'paciente_id');
+    }
+
 
     
 }

@@ -82,11 +82,7 @@ class parteDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'rut_paciente',
-            'nombre_paciente',
-            'apellido_paciente',
-            'telefono_paciente',
-            'edad_paciente',
+            'id_paciente',
             'tipo_cirugia',
             'especialidad',
             'diagnostico',

@@ -1,31 +1,22 @@
-<!-- Rut Paciente Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('rut_paciente', 'Rut Paciente:') !!}
-    {!! Form::text('rut_paciente', null, ['class' => 'form-control']) !!}
-</div>
+<div class="col-12">
+    <div class="card card-outline card-info">
+        <div class="card-header">
+            <h3 class="card-title">Datos Personales</h3>
 
-<!-- Nombre Paciente Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nombre_paciente', 'Nombre Paciente:') !!}
-    {!! Form::text('nombre_paciente', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Apellido Paciente Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('apellido_paciente', 'Apellido Paciente:') !!}
-    {!! Form::text('apellido_paciente', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Telefono Paciente Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('telefono_paciente', 'Telefono Paciente:') !!}
-    {!! Form::text('telefono_paciente', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Edad Paciente Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('edad_paciente', 'Edad Paciente:') !!}
-    {!! Form::number('edad_paciente', null, ['class' => 'form-control']) !!}
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+            </div>
+            <!-- /.card-tools -->
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="form-row">
+                @include('pacientes.fields',['paciente' => $preparacion->paciente ?? null])
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
 </div>
 
 <!-- Tipo Cirugia Field -->
@@ -63,7 +54,7 @@
 <!-- Lateralidad Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('lateralidad', 'Lateralidad:') !!}
-    {!! Form::select('lateralidad', ['no_aplica_si_aplica' => 'no_aplica_si_aplica'], null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('lateralidad', ['no_aplica' => 'no_aplica', 'si_aplica' => 'si_aplica'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 

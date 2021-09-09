@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version July 6, 2021, 1:17 pm CST
  *
  * @property \Illuminate\Database\Eloquent\Collection $preparaciones
+ * @property \Illuminate\Database\Eloquent\Collection $partes
  * @property string $run
  * @property string $dv_run
  * @property string $apellido_paterno
@@ -115,6 +116,11 @@ class Paciente extends Model
     public function preparaciones()
     {
         return $this->hasMany(\App\Models\Preparacion::class, 'paciente_id');
+    }
+
+    public function partes()
+    {
+        return $this->hasMany(\App\Models\parte::class, 'paciente_id');
     }
 
     public function getNombreCompletoAttribute()

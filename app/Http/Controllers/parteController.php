@@ -1,8 +1,9 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
 
 use App\DataTables\parteDataTable;
+use App\DataTables\Scopes\ScopeparteDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateparteRequest;
 use App\Http\Requests\UpdateparteRequest;
@@ -12,6 +13,7 @@ use Carbon\Carbon;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class parteController extends AppBaseController
@@ -33,7 +35,7 @@ class parteController extends AppBaseController
      * @return Response
      */
     public function create()
-    {
+    { 
         return view('partes.create');
     }
 
@@ -46,12 +48,20 @@ class parteController extends AppBaseController
      */
     public function store(CreateparteRequest $request)
     {
-        $input = $request->all();
+        try {
+            DB::beginTransaction();
 
-        /** @var parte $parte */
-        $parte = parte::create($input);
+            $this->procesaStore($request);
 
-        Flash::success('Parte guardado exitosamente.');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+
+            throw new \Exception($exception);
+        }
+
+        DB::commit();
+
+        Flash::success('Parte saved successfully.');
 
         return redirect(route('partes.index'));
     }
@@ -66,9 +76,13 @@ class parteController extends AppBaseController
          */
         $paciente = $this->creaOactualizaPaciente($request);
 
+
+
         $request->merge([
-            'paciente_id' => $paciente->id     
+            'paciente_id' => $paciente->id,     
         ]);
+
+
 
 
         /** @var Preparacion $preparacion */
@@ -113,6 +127,8 @@ class parteController extends AppBaseController
     {
         /** @var parte $parte */
         $parte = parte::find($id);
+
+        $parte = $this->addAttributos($parte);
 
         if (empty($parte)) {
             Flash::error('Parte not found');
@@ -176,7 +192,7 @@ class parteController extends AppBaseController
 
         return redirect(route('partes.index'));
     }
-
+ 
     public function creaOactualizaPaciente(Request $request)
     {
         $paciente = Paciente::updateOrCreate([

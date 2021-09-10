@@ -2,7 +2,7 @@
 
 @section('title_page',__('New Parte'))
 
-@section('content')
+@section('content') 
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -28,7 +28,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    {!! Form::open(['route' => 'partes.store']) !!}
+                    {!! Form::open(['route' => 'partes.store','class' => 'form-loading-on-submit']) !!}
                         <div class="form-row">
 
                             @include('partes.fields')

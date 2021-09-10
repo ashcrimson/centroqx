@@ -22,7 +22,7 @@
     </section>
 
     <div class="content">
-        <div class="container-fluid">
+        <div class="container-fluid"> 
 
             @include('layouts.partials.request_errors')
 

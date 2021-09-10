@@ -3,6 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\parte;
+use Carbon\Carbon;
+use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
@@ -82,7 +84,7 @@ class parteDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id_paciente',
+            'id',
             'tipo_cirugia',
             'especialidad',
             'diagnostico',
@@ -106,7 +108,8 @@ class parteDataTable extends DataTable
             'ex_preoperatorios',
             'biopsia',
             'instrumental',
-            'observaciones'
+            'observaciones',
+            
         ];
     }
 

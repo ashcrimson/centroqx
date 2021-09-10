@@ -46,7 +46,7 @@ class parteDataTable extends DataTable
      */
     public function query(parte $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['paciente']);
     }
 
     /**
@@ -85,6 +85,10 @@ class parteDataTable extends DataTable
     {
         return [
             'id',
+            'paciente.rut_completo',
+            'paciente.nombre_completo',
+            'paciente.fecha_nac',
+            'paciente.sexo',
             'tipo_cirugia',
             'especialidad',
             'diagnostico',
@@ -109,7 +113,7 @@ class parteDataTable extends DataTable
             'biopsia',
             'instrumental',
             'observaciones',
-            
+
         ];
     }
 

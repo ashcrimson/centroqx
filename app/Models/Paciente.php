@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $primer_nombre
  * @property string $segundo_nombre
  * @property string $nombre_completo
+ * @property string $rut_completo
  * @property string $fecha_nac
  * @property string $sexo
  * @property string $sigla_grado
@@ -40,7 +41,9 @@ class Paciente extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $appends = ['nombre_completo'];
+    protected $appends = ['nombre_completo','rut_completo'];
+
+   
 
     public $fillable = [
         'run',
@@ -126,5 +129,10 @@ class Paciente extends Model
     public function getNombreCompletoAttribute()
     {
         return $this->primer_nombre.' '.$this->segundo_nombre.' '.$this->apellido_paterno." ".$this->apellido_materno;
+    }
+
+    public function getRutCompletoAttribute()
+    {
+        return $this->run.'-'.$this->dv_run;
     }
 }

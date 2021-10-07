@@ -76,6 +76,7 @@ class parte extends Model
         'ex_preoperatorios',
         'biopsia',
         'instrumental',
+        'medicamentos',
         'observaciones'
     ];
 
@@ -107,6 +108,7 @@ class parte extends Model
         'ex_preoperatorios' => 'string',
         'biopsia' => 'string',
         'instrumental' => 'string',
+        'medicamentos' => 'string',
         'observaciones' => 'string'
     ];
 
@@ -117,8 +119,9 @@ class parte extends Model
      */
     public static $rules = [
 
-        'clasificacion_asa'=>'nullable'
-        
+        'clasificacion_asa'=>'nullable',
+        'medicamentos'=>'nullable',
+        'observaciones'=>'nullable'
     ];
     
     /**

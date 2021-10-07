@@ -112,6 +112,7 @@ class parteDataTable extends DataTable
             'ex_preoperatorios',
             'biopsia',
             'instrumental',
+            'medicamentos',
             'observaciones',
 
         ];

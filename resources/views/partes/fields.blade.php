@@ -200,12 +200,22 @@
                 {!! Form::text('instrumental', null, ['class' => 'form-control']) !!}
             </div>
 
+            <!-- Medicamentos Field -->
+            @can('admision')
+            <div class="form-group col-sm-4">
+                {!! Form::label('medicamentos', 'Medicamentos:') !!}
+                {!! Form::text('medicamentos', null, ['class' => 'form-control']) !!}
+            </div>
+            @endcan
+
 
             <!-- Observaciones Field -->
+            @can('admision')
             <div class="form-group col-sm-4">
                 {!! Form::label('observaciones', 'Observaciones:') !!}
                 {!! Form::text('observaciones', null, ['class' => 'form-control']) !!}
             </div>
+            @endcan
 
 
             </div>

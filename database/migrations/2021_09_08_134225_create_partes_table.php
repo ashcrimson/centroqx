@@ -41,7 +41,8 @@ class CreatePartesTable extends Migration
             $table->string('ex_preoperatorios');
             $table->string('biopsia');
             $table->string('instrumental');
-            $table->string('observaciones');
+            $table->string('medicamentos')->nullable();
+            $table->string('observaciones')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

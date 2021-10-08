@@ -19,7 +19,7 @@ class CreatePartesTable extends Migration
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->string('tipo_cirugia');
-            $table->string('especialidad');
+            $table->string('especialidad')->nullable();
             $table->string('diagnostico');
             $table->string('otro_diagnostico');
             $table->string('intervencion');

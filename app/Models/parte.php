@@ -121,6 +121,7 @@ class parte extends Model
 
         'clasificacion_asa'=>'nullable',
         'medicamentos'=>'nullable',
+        'especialidad'=>'nullable',
         'observaciones'=>'nullable'
     ];
     

@@ -12,6 +12,7 @@
                     <h1>Partes</h1>
                 </div>
                 <div class="col-sm-6">
+                    @can('medico')
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item">
                             <a class="btn btn-outline-success"
@@ -21,6 +22,7 @@
                             </a>
                         </li>
                     </ol>
+                    @endcan
                 </div>
             </div>
         </div><!-- /.container-fluid -->

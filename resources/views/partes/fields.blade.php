@@ -34,20 +34,12 @@
         <div class="card-body">
             <div class="form-row">
 
-
+        @can('medico')
             <!-- Tipo Cirugia Field -->
             <div class="form-group col-sm-4">
                 {!! Form::label('tipo_cirugia', 'Tipo Cirugia:') !!}
                 {!! Form::select('tipo_cirugia', ['opcion1' => 'opcion1', 'opcion2' => 'opcion2', 'opcion3' => 'opcion3'], null, ['class' => 'form-control custom-select']) !!}
             </div>
-
-
-            <!-- Especialidad Field -->
-            <div class="form-group col-sm-4">
-                {!! Form::label('especialidad', 'Especialidad:') !!}
-                {!! Form::select('especialidad', ['tipo1' => 'tipo1', 'tipo2' => 'tipo2', 'tipo3' => 'tipo3'], null, ['class' => 'form-control custom-select']) !!}
-            </div>
-
 
              <!-- Diagnostico Field -->
             <div class="form-group col-sm-4">
@@ -199,6 +191,15 @@
                 {!! Form::label('instrumental', 'Instrumental:') !!}
                 {!! Form::text('instrumental', null, ['class' => 'form-control']) !!}
             </div>
+            @endcan
+
+            <!-- Especialidad Field -->
+            @can('admision')
+            <div class="form-group col-sm-4">
+                {!! Form::label('especialidad', 'Especialidad:') !!}
+                {!! Form::select('especialidad', ['Trauma' => 'Trauma', 'Cardiología' => 'Cardiología', 'Etc' => 'Etc'], null, ['class' => 'form-control custom-select']) !!}
+            </div>
+            @endcan
 
             <!-- Medicamentos Field -->
             @can('admision')
